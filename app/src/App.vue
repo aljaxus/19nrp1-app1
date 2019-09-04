@@ -13,7 +13,7 @@ import Appbar from './components/Appbar'
 export default {
   name: 'App',
   components: {
-    Appbar
-  }
+    Appbar,
+  },
 }
 </script>

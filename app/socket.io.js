@@ -28,4 +28,4 @@ io.on('connection', function (socket) {
 
 setInterval(() => {
   console.log('Socket server is alive')
-}, 500);
+}, 500)
