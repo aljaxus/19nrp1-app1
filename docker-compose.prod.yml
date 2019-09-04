@@ -7,7 +7,7 @@ services:
     image: 19nrpapp1:latest
     build:
       context: ./app
-      dockerfile: dockerfile
+      dockerfile: dockerfile.prod
     env_file: ./config/production.env
     command: ["yarn", "run", "start"]
     ports:

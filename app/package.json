@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --port 82 --host 0.0.0.0",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "production": "node serve_production.js",
     "messaging": "node messaging.js",
     "messaging:dev": "nodemon messaging.js"
   },
