@@ -1,0 +1,16 @@
+{
+  "name": "msg",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "aljaxus",
+  "license": "private",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.2.0"
+  },
+  "scripts": {
+    "start": "node messaging.js",
+    "dev": "nodemon messaging.js"
+  }
+}

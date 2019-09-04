@@ -22,3 +22,25 @@ services:
       timeout: 10s
       retries: 3
       start_period: 15s
+
+  msgserver:
+    container_name: 19nrpapp1msg
+    restart: unless-stopped
+    image: 19nrpapp1msg:latest
+    build:
+      context: ./msg
+      dockerfile: dockerfile
+    environment:
+      - ENV=development
+    command: ["yarn", "run", "dev"]
+    volumes:
+      - ./app:/var/server
+      - /var/server/node_modules
+    ports:
+      - "8103:80"
+    healthcheck:
+      test: ["CMD", "curl", "-sSG", "http://localhost:80/healthcheck"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
