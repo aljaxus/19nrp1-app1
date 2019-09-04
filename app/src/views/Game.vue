@@ -1,8 +1,8 @@
 <template>
-  <div>Home</div>
+  <span>GAME</span>
 </template>
 <script>
 export default {
-  name: 'Home'
+  name: 'Game'
 }
 </script>

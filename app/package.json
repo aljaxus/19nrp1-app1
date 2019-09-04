@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vue-cli-service serve --port 80 --host 0.0.0.0",
+    "dev": "concurrently \"yarn run serve\" \"yarn run msgserver:dev\" ",
+    "serve": "vue-cli-service serve --port 80 --host 0.0.0.0",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "production": "node serve_production.js"
+    "production": "node socket.io.js",
+    "msgserver:dev": "nodemon -w socket.io.js socket.io.js"
   },
   "dependencies": {
     "@mdi/font": "^3.6.95",
@@ -14,6 +16,7 @@
     "express": "^4.17.1",
     "register-service-worker": "^1.6.2",
     "roboto-fontface": "*",
+    "socket.io": "^2.2.0",
     "socket.io-client": "^2.2.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
