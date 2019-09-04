@@ -10,8 +10,10 @@ import '@mdi/font/css/materialdesignicons.css'
 import VueSocketIOExt from 'vue-socket.io-extended'
 import io from 'socket.io-client'
 
-const socket = io(`http://${window.location.hostname}:1923`)
-console.log(socket)
+const socket = io('/socket.io')
+socket.on('connect', () => {
+  console.log(socket)
+})
 
 Vue.use(VueSocketIOExt, socket)
 
