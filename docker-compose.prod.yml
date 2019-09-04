@@ -10,7 +10,7 @@ services:
       dockerfile: dockerfile.prod
     environment:
       - ENV=production
-    command: ["yarn", "run", "start"]
+    command: ["yarn", "run", "production"]
     ports:
       - "8102:80"
     healthcheck:

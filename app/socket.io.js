@@ -5,7 +5,7 @@ const io = require('socket.io')(server)
 
 
 if (process.env.ENV === 'production') {
-  express.static('dist')
+  app.use(express.static('dist'))
   server.listen(80)
 } else if (process.env.ENV === 'development') {
   server.listen(81)
