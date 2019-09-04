@@ -13,10 +13,6 @@ if (process.env.ENV === 'production') {
 
 io.on('connection', function (socket) {
   console.log(`${socket.id} connected`)
-  socket.emit('news', { hello: 'world' })
-  socket.on('my other event', function (data) {
-    console.log(data)
-  })
   socket.on('leave', () => {
     console.log(`${socket.id} disconnected`)
   })

@@ -10,7 +10,7 @@ import '@mdi/font/css/materialdesignicons.css'
 import VueSocketIOExt from 'vue-socket.io-extended'
 import io from 'socket.io-client'
 
-const socket = io('/socket.io')
+const socket = io()
 socket.on('connect', () => {
   console.log(socket)
 })
