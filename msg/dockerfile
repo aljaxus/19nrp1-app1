@@ -11,7 +11,7 @@ WORKDIR /var/server
 COPY package.json yarn.* ./
 # Install all dependencies on the build container
 RUN yarn install --force
-RUN yarn add global @vue/cli
+RUN yarn add global nodemon
 ### Post build process
 #Copy all the files from the build container to final container
 COPY . .

@@ -34,7 +34,7 @@ services:
       - ENV=development
     command: ["yarn", "run", "dev"]
     volumes:
-      - ./app:/var/server
+      - ./msg:/var/server
       - /var/server/node_modules
     ports:
       - "8103:80"
