@@ -10,6 +10,7 @@ services:
       dockerfile: dockerfile
     environment:
       - ENV=development
+      - SOCKETIO_PORT=8103
     command: ['yarn', 'run', 'dev']
     volumes:
       - ./app:/var/server

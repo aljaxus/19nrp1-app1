@@ -9,14 +9,6 @@ if (process.env.ENV === 'production') {
   server.listen(80)
 } else if (process.env.ENV === 'development') {
   server.listen(81)
-} else {
-  console.error(`
-  - START ERROR
-  -
-  - THE process.env.ENV is neither 'production' nor 'development' !
-  -
-  - END ERROR
-  `)
 }
 
 io.on('connection', function (socket) {
