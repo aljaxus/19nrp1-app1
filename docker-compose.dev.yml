@@ -8,7 +8,8 @@ services:
     build:
       context: ./app
       dockerfile: dockerfile
-    env_file: ./config/development.env
+    environment:
+      - ENV=development
     command: ["yarn", "run", "dev"]
     volumes:
       - ./app:/var/server

@@ -8,7 +8,8 @@ services:
     build:
       context: ./app
       dockerfile: dockerfile.prod
-    env_file: ./config/production.env
+    environment:
+      - ENV=production
     command: ["yarn", "run", "start"]
     ports:
       - "8102:80"
