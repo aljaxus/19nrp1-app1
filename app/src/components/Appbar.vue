@@ -6,7 +6,7 @@
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-btn
-      text
+      outlined
       href="https://github.com/aljaxus/19nrp1-app1"
       target="_blank"
     >

@@ -3,23 +3,15 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
+import sockets from './plugins/socket.io'
 import './registerServiceWorker'
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import '@mdi/font/css/materialdesignicons.css'
 
-import VueSocketIOExt from 'vue-socket.io-extended'
-import io from 'socket.io-client'
-
-const socket = io()
-socket.on('connect', () => {
-  console.log(socket)
-})
-
-Vue.use(VueSocketIOExt, socket)
-
 Vue.config.productionTip = false
 
 new Vue({
+  sockets,
   router,
   store,
   vuetify,
