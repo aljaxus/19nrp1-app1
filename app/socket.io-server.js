@@ -34,6 +34,14 @@ let games = [
     ],
     state: 'waiting',
   },
+  {
+    id: 'random',
+    players: [
+      'playerid3',
+      'playerid4',
+    ],
+    state: 'ending',
+  },
 ]
 
 io.on('connection', function (socket) {
