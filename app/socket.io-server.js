@@ -18,14 +18,23 @@ if (process.env.ENV === 'production') {
 /**
  * {
  *   id: SocketRoomID,
- *   players: {
- *     id: SocketID
- *   },
+ *   players: [
+ *     SocketID
+ *   ],
  *   state: 'waiting', 'starting', 'ingame', 'ending'
  * }
  */
 // eslint-disable-next-line prefer-const
-let games = []
+let games = [
+  {
+    id: 'random',
+    players: [
+      'playerid1',
+      'playerid2',
+    ],
+    state: 'waiting',
+  },
+]
 
 io.on('connection', function (socket) {
   console.log(`[+] ${socket.id} connected`)
@@ -37,11 +46,12 @@ io.on('connection', function (socket) {
     }
   }))
 
-  socket.on('joingame', msg => {
-    // if (
-    //   games.some(el => el.id === 'msg.gameid').length > 0 &&
-    // ) {
-    // }
+  socket.on('joingame', gameid => {
+    if (games.some(el => el.id === gameid && el.state === 'waiting')) {
+      const index = games.findIndex(el => el.id === gameid)
+      if (games[index].players.includes(socket.io)) return
+      games[index].players.push(socket.id)
+    }
   })
 
   socket.on('disconnect', () => {

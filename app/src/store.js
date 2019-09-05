@@ -4,7 +4,16 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
-});
+  state: {
+    allgames: [],
+  },
+  mutations: {
+    SET_ALLGAMES: (state, newState) => state.allgames = newState,
+  },
+  actions: {
+
+  },
+  getters: {
+    allgames: state => state.allgames,
+  },
+})
