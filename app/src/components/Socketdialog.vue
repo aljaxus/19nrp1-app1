@@ -2,6 +2,7 @@
   <v-dialog
     :value="$socket.disconnected"
     persistent
+    no-click-animation
     width="600"
   >
     <v-card color="error" dark>
