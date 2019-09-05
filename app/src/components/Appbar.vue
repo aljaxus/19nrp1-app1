@@ -1,9 +1,14 @@
 <template>
   <v-app-bar app>
-    <v-toolbar-title class="headline text-uppercase">
+    <v-btn
+      text
+      exact
+      class="text-uppercase"
+      :to="{ name: 'home' }"
+    >
       <span>19NRP</span>
       <span class="font-weight-light">APP1</span>
-    </v-toolbar-title>
+    </v-btn>
     <v-spacer></v-spacer>
     <v-btn
       outlined

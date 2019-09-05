@@ -23,6 +23,14 @@
                   </v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
+              <v-list-item @click="joinNewGame()">
+                <v-list-item-content>
+                  <v-list-item-title class="success--text">
+                    <v-icon v-text="'mdi-plus'" class="success--text" />
+                    Create new game
+                  </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
             </v-list-item-group>
           </v-list>
         </v-flex>
@@ -32,6 +40,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
+import socket from '../plugins/socket.io'
 
 export default {
   name: 'Home',
@@ -55,5 +64,9 @@ export default {
       })
     }
   },
+  mounted: () => socket.io.emit('getallgames'),
+  methods: {
+    joinNewGame: () => socket.io.emit('joinnewgame')
+  }
 }
 </script>

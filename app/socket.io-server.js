@@ -25,41 +25,49 @@ if (process.env.ENV === 'production') {
  * }
  */
 // eslint-disable-next-line prefer-const
-let games = [
-  {
-    id: 'random',
-    players: [
-      'playerid1',
-      'playerid2',
-    ],
-    state: 'waiting',
+const util = {
+  createId (length = 15) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
   },
-  {
-    id: 'random',
-    players: [
-      'playerid3',
-      'playerid4',
-    ],
-    state: 'ending',
+  getGameRooms () {
+    const rooms = io.sockets.adapter.rooms
+    const games = Object.keys(rooms)
+      .filter(key => !!rooms[key].isgame === true)
+      .map(key => {
+        const el = rooms[key]
+        return {
+          id: key,
+          sockets: el.sockets.length,
+        }
+      })
+    return games
   },
-]
+}
 
 io.on('connection', function (socket) {
   console.log(`[+] ${socket.id} connected`)
-  socket.emit('allgames', games.map(el => {
-    return {
-      id: el.id,
-      playercount: el.players.length,
-      state: el.state,
-    }
-  }))
+  socket.emit('allgames', util.getGameRooms())
+
+  socket.on('joinnewgame', () => {
+    const gameid = 'game-' + util.createId(15)
+    while (socket.rooms[gameid]) gameid = 'game-' + util.createId(15)
+    socket.leaveAll()
+    socket.join(gameid)
+    socket.adapter.rooms[gameid].isgame = true
+    io.emit('allgames', util.getGameRooms())
+    socket.emit('routeto', { name: 'game', params: { gameid } })
+  })
 
   socket.on('joingame', gameid => {
-    if (games.some(el => el.id === gameid && el.state === 'waiting')) {
-      const index = games.findIndex(el => el.id === gameid)
-      if (games[index].players.includes(socket.io)) return
-      games[index].players.push(socket.id)
-    }
+
+    socket.join(gameid)
+    socket.emit('routeto', { name: 'game', params: { gameid } })
   })
 
   socket.on('disconnect', () => {
