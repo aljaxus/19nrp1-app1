@@ -11,15 +11,14 @@
             <v-list-item-group>
               <v-list-item
                 v-for="(item, i) in games"
-                :color="item.color"
+                :disabled="item.state !== 'waiting'"
+                :class="`${item.color} lighten-5`"
                 :key="i"
                 :to="{ name: 'game', params: { gameid: item.id } }"
               >
-                <v-list-item-icon>
-                  <v-icon v-text="item.icon" />
-                </v-list-item-icon>
                 <v-list-item-content>
-                  <v-list-item-title>
+                  <v-list-item-title :class="`${item.color}--text`">
+                    <v-icon v-text="item.icon" :class="`${item.color}--text mr-1`" />
                     {{ item.id }} - {{ item.msg }}
                   </v-list-item-title>
                 </v-list-item-content>
@@ -43,10 +42,10 @@ export default {
         let icon = ''
         let color = ''
         let msg = ''
-        if (el.state === 'waiting') { icon = 'mdi-clock-outline'; color = 'info--text'; msg = 'In waiting lobby' }
-        if (el.state === 'starting') { icon = 'mdi-alert'; color = 'warning--text'; msg = 'Game is starting' }
-        if (el.state === 'ingame') { icon = 'mdi-account-group'; color = 'warning--text'; msg = 'Game is running' }
-        if (el.state === 'ending') { icon = 'mdi-stop-circle-outline'; color = 'error--text'; msg = 'Game is ending' }
+        if (el.state === 'waiting') { icon = 'mdi-clock-outline'; color = 'success'; msg = 'In waiting lobby' }
+        if (el.state === 'starting') { icon = 'mdi-alert'; color = 'warning'; msg = 'Game is starting' }
+        if (el.state === 'ingame') { icon = 'mdi-account-group'; color = 'info'; msg = 'Game is running' }
+        if (el.state === 'ending') { icon = 'mdi-stop-circle-outline'; color = 'error'; msg = 'Game is ending' }
         return {
           ...el,
           msg,
