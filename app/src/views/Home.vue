@@ -52,7 +52,7 @@ export default {
     socket.io.emit('getallgames')
   },
   methods: {
-    joinNewGame: () => socket.io.emit('joinnewgame')
-  }
+    joinNewGame: () => socket.io.emit('joinnewgame'),
+  },
 }
 </script>

@@ -45,10 +45,22 @@ const util = {
         let icon = ''
         let color = ''
         let msg = ''
-        if (el.state === 'waiting') { icon = 'mdi-clock-outline'; color = 'success'; msg = 'In waiting lobby' }
-        if (el.state === 'starting') { icon = 'mdi-alert'; color = 'warning'; msg = 'Game is starting' }
-        if (el.state === 'ingame') { icon = 'mdi-account-group'; color = 'info'; msg = 'Game is running' }
-        if (el.state === 'ending') { icon = 'mdi-stop-circle-outline'; color = 'error'; msg = 'Game is ending' }
+        if (el.state === 'waiting') {
+          icon = 'mdi-clock-outline'; color = 'success';
+          msg = 'In waiting lobby'
+        }
+        if (el.state === 'starting') {
+          icon = 'mdi-alert'; color = 'warning';
+          msg = 'Game is starting'
+        }
+        if (el.state === 'ingame') {
+          icon = 'mdi-account-group'; color = 'info';
+          msg = 'Game is running'
+        }
+        if (el.state === 'ending') {
+          icon = 'mdi-stop-circle-outline'; color = 'error';
+          msg = 'Game is ending'
+        }
 
         return {
           id: key,

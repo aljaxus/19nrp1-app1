@@ -11,7 +11,7 @@
         color="white"
         class="mb-0"
       />
-      <v-card-title 
+      <v-card-title
         primary-title
         class="py-3"
         v-text="'Disconnected from the socket server! Reconnecting ...'"
