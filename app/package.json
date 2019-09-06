@@ -7,8 +7,8 @@
     "serve": "vue-cli-service serve --port 80 --host 0.0.0.0",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint --fix",
-    "production": "node socket.io-server.js",
-    "msgserver:dev": "nodemon -w socket.io-server.js socket.io-server.js"
+    "production": "node ./server/index.js",
+    "msgserver:dev": "nodemon -w ./server ./server/index.js"
   },
   "dependencies": {
     "@mdi/font": "^3.6.95",

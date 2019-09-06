@@ -2,7 +2,7 @@
   <v-card>
     <v-card-text>
       <v-layout row wrap>
-        <v-flex xs12 md4 lg3 xl3>
+        <v-flex xs12 md6 lg3 xl3>
           <v-list
             rounded
             dense
@@ -48,7 +48,9 @@ export default {
     ...mapGetters([ 'allgames' ]),
   },
   mounted: () => {
+    console.log('leaveall')
     socket.io.emit('leaveall')
+    console.log('getallgames')
     socket.io.emit('getallgames')
   },
   methods: {
